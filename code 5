@@ -1,0 +1,48 @@
+public static List<String> getFruits(Map<String,String> numbers)
+	{
+		//Write a program to get a map contains people name and mobile numbers as string.
+		//Find the persons having lucky mobile numbers.
+		//Lucky mobile numbers are found by find the sum of digits in a mobile number and check whether the sum is a prime or not.
+		//If prime Its a lucky number.
+		//return those persons as a list
+		int sum = 0;
+		
+	List<String> ls = new ArrayList();
+	for(Entry<String, String> mobile : numbers.entrySet()){
+		String value = mobile.getValue();
+
+	   sum=0;
+	for(int i=0 ; i<value.length();i++)
+	{
+	
+		int value1=Integer.parseInt(String.valueOf(value.charAt(i)));
+		sum = sum + value1;
+	}
+	System.out.println(sum);
+	
+	boolean res = checkPrime(sum);
+        if(res){
+       String st= mobile.getKey();
+       ls.add(st);
+        }
+	}
+		return ls;
+	}
+
+	private static boolean checkPrime(int sum) {
+		int flag=0;
+		for(int k=2;k<sum;k++)
+		{
+			if(sum%k==0)
+			{
+				flag=-1;
+				break;
+			}
+		}
+		if(flag==0)
+			return true;
+		else
+			return false;
+		
+		
+	}
